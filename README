@@ -1,0 +1,38 @@
+Proyecto Base para creación de api.
+
+Las tecnologías incluidas en este proyecto base son las siguientes:
+
+	- Spring Boot
+	- Spring Data JPA
+	- Spring Data Rest
+	- Spring Data Rest Hal
+	- Jwt
+	- Profiles
+	- Jndi
+	- SSL
+	
+Para generar una nueva a partir de este proyecto hay que seguir los siguientes pasos:
+	
+	1.- Clonar proyecto en el directorio deseado.
+	2.- Eliminar directorio .git del proyecto clonado.
+	3.- Subir proyecto al nuevo repositorio creado para el nuevo proyecto.
+	
+Para personalizar el código para la nueva API hay que:
+	
+	1.- Cambiar el contexto de la aplicación en el fichero yml. 
+		La propiedad que indica el contexto es: 
+			server.servlet.context-path
+	
+	2.- Cambiar el nombre del paquete principal del proyecto. El actual se corresponde con "restapianalitica"
+	
+	3.- Cambiar el nombre de la clase principal del proyecto: "RestApiAnaliticaApplication"
+	
+	4.- Cambiar el nombre de generación del war en el fichero build.gradle.
+	
+	5.- Editar las conexiones necesarias para la nueva API. Tenemos configuradas de ejemplo dos conexiones, una de ellas como primaria.
+		Las conexiones se corresponden con vs_2007 y gc2006_release.
+		Bastará con modificar los datasource para el profile dev y los jndi para los profiles demo y prod dentro de los ficheros yml.
+		
+		En el directorio /conf/database tenemos las diferentes configuraciones según los diferentes perfiles, que también habrá que adaptar según corresponda.
+		
+	
