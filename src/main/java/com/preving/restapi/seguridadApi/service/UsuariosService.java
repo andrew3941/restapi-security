@@ -1,4 +1,4 @@
-package com.preving.restapi.seguridadApi.security.service;
+package com.preving.restapi.seguridadApi.service;
 
 /**
  * Created by rogeliogragera on 15/3/17.

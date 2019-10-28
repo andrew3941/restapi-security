@@ -1,4 +1,4 @@
-package com.preving.restapi.seguridadApi.security;
+package com.preving.restapi.seguridadApi.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

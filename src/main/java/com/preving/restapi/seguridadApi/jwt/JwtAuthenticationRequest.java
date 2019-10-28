@@ -1,4 +1,4 @@
-package com.preving.restapi.seguridadApi.security;
+package com.preving.restapi.seguridadApi.jwt;
 
 import java.io.Serializable;
 

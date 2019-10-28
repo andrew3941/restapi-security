@@ -1,4 +1,4 @@
-package com.preving.restapi.seguridadApi.security;
+package com.preving.restapi.seguridadApi.jwt;
 
 import com.preving.restapi.seguridadApi.domain.Authority;
 import com.preving.restapi.seguridadApi.domain.ExtranetUser;

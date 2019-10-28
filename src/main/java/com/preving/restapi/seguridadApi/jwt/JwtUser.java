@@ -1,4 +1,4 @@
-package com.preving.restapi.seguridadApi.security;
+package com.preving.restapi.seguridadApi.jwt;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;

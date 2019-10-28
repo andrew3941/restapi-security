@@ -1,11 +1,11 @@
-package com.preving.restapi.seguridadApi.security.service;
+package com.preving.restapi.seguridadApi.service;
 
 import com.preving.restapi.seguridadApi.dao.IntranetUserRepository;
 import com.preving.restapi.seguridadApi.domain.IntranetUser;
 import com.preving.restapi.seguridadApi.exceptions.CustomRestApiException;
 import com.preving.restapi.seguridadApi.exceptions.errors.RestApiErrorCode;
 import com.preving.restapi.seguridadApi.exceptions.errors.RestApiErrorDetail;
-import com.preving.restapi.seguridadApi.security.JwtUserFactory;
+import com.preving.restapi.seguridadApi.jwt.JwtUserFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;

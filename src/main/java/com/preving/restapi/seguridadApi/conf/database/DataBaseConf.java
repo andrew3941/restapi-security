@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @EnableJpaRepositories(
         basePackages = {"com.preving.restapi.seguridadApi.dao",
-                "com.preving.restapi.seguridadApi.security.repository"})
+                "com.preving.restapi.seguridadApi.jwt.repository"})
 public class DataBaseConf {
 
     @Primary

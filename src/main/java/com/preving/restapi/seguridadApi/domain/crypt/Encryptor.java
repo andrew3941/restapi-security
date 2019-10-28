@@ -1,4 +1,4 @@
-package com.preving.restapi.seguridadApi.security.crypt;
+package com.preving.restapi.seguridadApi.domain.crypt;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.bouncycastle.crypto.BufferedBlockCipher;

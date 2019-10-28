@@ -1,10 +1,10 @@
-package com.preving.restapi.seguridadApi.security.service;
+package com.preving.restapi.seguridadApi.service;
 
 
 import com.preving.restapi.seguridadApi.exceptions.CustomRestApiException;
 import com.preving.restapi.seguridadApi.exceptions.errors.RestApiErrorCode;
 import com.preving.restapi.seguridadApi.exceptions.errors.RestApiErrorDetail;
-import com.preving.restapi.seguridadApi.security.crypt.Encryptor;
+import com.preving.restapi.seguridadApi.domain.crypt.Encryptor;
 import org.bouncycastle.crypto.CryptoException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

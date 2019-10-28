@@ -1,4 +1,4 @@
-package com.preving.restapi.seguridadApi.security.service;
+package com.preving.restapi.seguridadApi.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

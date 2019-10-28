@@ -1,6 +1,6 @@
 package com.preving.restapi.seguridadApi.conf;
 
-import com.preving.restapi.seguridadApi.security.JwtUser;
+import com.preving.restapi.seguridadApi.jwt.JwtUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;

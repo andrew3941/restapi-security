@@ -1,9 +1,9 @@
 package com.preving.restapi.seguridadApi.conf;
 
-import com.preving.restapi.seguridadApi.security.CustomAccessDeniedHandler;
-import com.preving.restapi.seguridadApi.security.JwtAuthenticationEntryPoint;
-import com.preving.restapi.seguridadApi.security.JwtAuthenticationTokenFilter;
-import com.preving.restapi.seguridadApi.security.PrevingSSOAuthenticationProvider;
+import com.preving.restapi.seguridadApi.jwt.CustomAccessDeniedHandler;
+import com.preving.restapi.seguridadApi.jwt.JwtAuthenticationEntryPoint;
+import com.preving.restapi.seguridadApi.jwt.JwtAuthenticationTokenFilter;
+import com.preving.restapi.seguridadApi.jwt.PrevingSSOAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
