@@ -79,7 +79,7 @@ public class AuthenticationRestController {
         }
     }
 
-    /*@RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
+    @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
     public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
         String authToken = this.jwtTokenUtil.getTokenFromHeader(request);
         String username = this.jwtTokenUtil.getUsernameFromToken(authToken);
@@ -94,7 +94,7 @@ public class AuthenticationRestController {
             return ResponseEntity.badRequest().body(null);
 
         }
-    }    */
+    }
 
     @RequestMapping(value = "/login/{usuarioId}/{hash}", method = RequestMethod.GET)
     public ResponseEntity<?> loginParams(
