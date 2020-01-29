@@ -26,6 +26,7 @@ jwt:
   route:
     authentication:
       path: /login
+      refresh: /refresh
 
 spring:
   jackson:

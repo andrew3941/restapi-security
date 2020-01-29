@@ -1,6 +1,9 @@
 package com.preving.restapi.seguridadApi.conf;
 
+import com.preving.restapi.seguridadApi.dao.IntranetUserRepository;
+import com.preving.restapi.seguridadApi.domain.IntranetUser;
 import com.preving.restapi.seguridadApi.jwt.JwtUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -19,19 +22,23 @@ import java.util.Optional;
 public class AuditingConfig {
 
     @Bean
-    public AuditorAware<Integer> createAuditorProvider() {
+    public AuditorAware<IntranetUser> createAuditorProvider() {
         return new SecurityAuditor();
     }
 
-    public static class SecurityAuditor implements AuditorAware<Integer> {
+    public static class SecurityAuditor implements AuditorAware<IntranetUser> {
+        @Autowired
+        IntranetUserRepository usuariosRepository;
+
         @Override
-        public Optional<Integer> getCurrentAuditor() {
+        public Optional<IntranetUser> getCurrentAuditor() {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             JwtUser user = authentication == null || !authentication.isAuthenticated() ?
                     null :
                     (JwtUser) authentication.getPrincipal();
 
-            return Optional.of(Objects.requireNonNull(user).getId().intValue());
+            Long usuarioId = Objects.requireNonNull(user).getId();
+            return this.usuariosRepository.findById(usuarioId);
         }
     }
 }
