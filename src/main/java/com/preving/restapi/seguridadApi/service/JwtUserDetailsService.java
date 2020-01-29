@@ -1,5 +1,6 @@
 package com.preving.restapi.seguridadApi.service;
 
+import com.preving.restapi.seguridadApi.jwt.JwtUser;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,4 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 public interface JwtUserDetailsService extends UserDetailsService {
 
     UserDetails loadUserById(long id) throws UsernameNotFoundException;
+
+    JwtUser loadJwtUserByUsername(String username) throws UsernameNotFoundException;
 }

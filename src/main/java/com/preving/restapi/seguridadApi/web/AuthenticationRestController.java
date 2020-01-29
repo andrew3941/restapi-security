@@ -7,6 +7,7 @@ import com.preving.restapi.seguridadApi.exceptions.errors.RestApiErrorCode;
 import com.preving.restapi.seguridadApi.exceptions.errors.RestApiErrorDetail;
 import com.preving.restapi.seguridadApi.jwt.JwtAuthenticationRequest;
 import com.preving.restapi.seguridadApi.jwt.JwtTokenUtil;
+import com.preving.restapi.seguridadApi.jwt.JwtUser;
 import com.preving.restapi.seguridadApi.service.ExtranetUserService;
 import com.preving.restapi.seguridadApi.service.JwtAuthenticationResponse;
 import com.preving.restapi.seguridadApi.service.JwtUserDetailsService;
@@ -23,8 +24,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/auth")
@@ -134,5 +138,57 @@ public class AuthenticationRestController {
         List<RestApiErrorDetail> errores = new ArrayList<>();
         errores.add(new RestApiErrorDetail("user.incorrect", RestApiErrorCode.USER_INCORRECT.getMessage()));
         throw new NotValidRestApiException(RestApiErrorCode.USER_INCORRECT, errores);
+    }
+
+    @RequestMapping(value = "/token", method = RequestMethod.POST)
+    public String getToken(
+            @RequestBody JwtAuthenticationRequest authenticationRequest
+    ) throws AuthenticationException {
+
+        final Authentication authentication = this.authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        authenticationRequest.getUsername(),
+                        authenticationRequest.getPassword()
+                )
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        // Reload password post-security so we can generate token
+        final UserDetails userDetails = this.userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+
+        return this.jwtTokenUtil.generateToken(userDetails);
+    }
+
+    @RequestMapping(value = "/check-authentication", method = RequestMethod.POST)
+    public Authentication authenticate(
+           @RequestBody Authentication authentication
+    ) throws AuthenticationException {
+
+       return this.usuariosService.getAuthentication(authentication);
+    }
+
+    @RequestMapping(value = "/get-user-by-username", method = RequestMethod.POST)
+    public Map filter(HttpServletRequest request, @RequestBody String username
+    ) throws AuthenticationException {
+
+        Map map = new HashMap();
+
+        String authToken = this.jwtTokenUtil.getTokenFromHeader(request);
+        JwtUser userDetails =  this.userDetailsService.loadJwtUserByUsername(username);
+
+        if (userDetails != null &&
+                this.jwtTokenUtil.validateToken(authToken, userDetails)) {
+            UsernamePasswordAuthenticationToken authentication =
+                    new UsernamePasswordAuthenticationToken(userDetails, null);
+
+            map.put("principal", authentication.getPrincipal());
+
+            map.put("authorities", userDetails.getAuthorities());
+
+            return map;
+        }
+
+        return null;
     }
 }

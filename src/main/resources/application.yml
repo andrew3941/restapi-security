@@ -1,11 +1,11 @@
 server:
-  port: 8443
+  port: 8444
   ssl:
-    key-store: classpath:ssl/tomcat.keystore
-    key-store-password: preving
-    key-password: preving
+      key-store: classpath:ssl/tomcat.keystore
+      key-store-password: preving
+      key-password: preving
   servlet:
-    context-path: /seguridadapi
+    context-path: /seguridad-api
 
 
 #Frase autenticacion
@@ -66,7 +66,7 @@ spring:
 # ====================================
 
 roles:
-  tecnico-externo: 25005
+  tecnico-externo:  25005
 
 ---
 

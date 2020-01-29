@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
 /**
  * Created by stephan on 20.03.16.
  */
-public class JwtUser implements UserDetails {
+public class JwtUser implements UserDetails, Serializable {
 
     private final Long id;
     private final String username;
@@ -44,7 +45,6 @@ public class JwtUser implements UserDetails {
         this.lastPasswordResetDate = lastPasswordResetDate;
     }
 
-    @JsonIgnore
     public Long getId() {
         return id;
     }
@@ -84,7 +84,6 @@ public class JwtUser implements UserDetails {
         return email;
     }
 
-    @JsonIgnore
     @Override
     public String getPassword() {
         return password;
@@ -100,7 +99,6 @@ public class JwtUser implements UserDetails {
         return enabled;
     }
 
-    @JsonIgnore
     public Date getLastPasswordResetDate() {
         return lastPasswordResetDate;
     }
