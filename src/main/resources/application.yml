@@ -106,4 +106,4 @@ spring:
 
 datasource:
    db-gc2006:
-     jndi-name: java:comp/env/jdbc/gc2006
+     jndi-name: java:comp/env/jdbc/gc
