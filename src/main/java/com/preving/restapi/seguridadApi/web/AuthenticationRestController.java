@@ -49,7 +49,7 @@ public class AuthenticationRestController {
     @Autowired
     private UsuariosService usuariosService;
 
-    @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)
+    @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<?> login(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
 
         // Perform the security
