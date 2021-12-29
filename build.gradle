@@ -34,6 +34,8 @@ repositories {
 	mavenCentral()
 }
 
+ext['log4j2.version'] = '2.17.0'
+
 dependencies {
 
 	// Spring Data Rest
